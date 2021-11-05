@@ -3,18 +3,14 @@
 ![image](data_science.jpg)
 
 Dans ce projet DataScience x Logistic Regression, vous allez poursuivre votre exploration du Machine Learning en ajoutant divers outils à votre escarcelle.
+In this DataScience x Logistic Regression project, you will continue your exploration of Machine Learning by adding various tools to your purse.
 
-Vous implémenterez un modèle de classification linéaire, dans la continuité du sujet
-linear regression : une logistic regression. Nous vous encourageons d’ailleurs beaucoup à
-vous créer une bibliothèque de machine learning au fur et à mesure que vous avancerez
-dans la branche.
+You will implement a linear classification model, in the continuity of the subject
+linear regression: a logistic regression.
 
-En somme :
-• Vous apprendrez à lire un jeu de données, à le visualiser de différentes manières,
-à sélectionner et nettoyer vos données.
-• Vous mettrez en place une régression logistique qui vous permettra de résoudre
-des problèmes de classification.
-
+In summary:
+* You will learn how to read a dataset, visualize it in different ways, select and clean your data.
+* You will set up a logistic regression which will allow you to solve classification problems.
 
 ## How to install
 
