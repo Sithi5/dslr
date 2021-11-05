@@ -13,16 +13,27 @@ extra_requirements = {
     "dev": dev_requirements,
 }
 
-
 setup(
     name="dslr",
     version="0.0.1",
     description="Datascience X Logistic Regression.",
     long_description=long_description,
-    author="Malo Boucé - Mathieu Ginisty",
+    author="Malo Boucé, Mathieu Ginisty",
     author_email="ma.sithis@gmail.com",
     url="https://github.com/Sithi5/dslr",
-    packages=["src", "tests"],
+    packages=["tests", "scripts", "predict", "train"],
+    entry_points={
+        "console_scripts": [
+            "logreg_predict = predict.logreg_predict:cli",
+            "logreg_train = train.logreg_train:cli",
+            # SCRIPTS
+            "describe = scripts.describe:cli",
+            "histogram = scripts.histogram:cli",
+            "pair_plot = scripts.pair_plot:cli",
+            "scatter_plot = scripts.scatter_plot:cli",
+            # END OF SCRIPTS
+        ],
+    },
     install_requires=requirements,
     extras_require=extra_requirements,
     classifiers=[
