@@ -1,6 +1,6 @@
 # Datascience X Logistic Regression [(subject)](https://cdn.intra.42.fr/pdf/pdf/19502/fr.subject.pdf)
 
-![image](data_science.jpg)
+![image](./resources/data_science.jpg)
 
 Dans ce projet DataScience x Logistic Regression, vous allez poursuivre votre exploration du Machine Learning en ajoutant divers outils à votre escarcelle.
 In this DataScience x Logistic Regression project, you will continue your exploration of Machine Learning by adding various tools to your purse.
