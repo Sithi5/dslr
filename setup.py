@@ -3,10 +3,12 @@ from setuptools import setup
 with open("README.md", "r") as f:
     long_description = f.read()
 
-requirements = []
+requirements = [
+    "pandas==1.3.4",
+    "numpy==1.21.4",
+]
 
 test_requirements = ["pytest==6.2.5"]
-
 dev_requirements = ["black==21.10b0"] + test_requirements
 
 extra_requirements = {
@@ -21,16 +23,16 @@ setup(
     author="Malo Boucé, Mathieu Ginisty",
     author_email="ma.sithis@gmail.com",
     url="https://github.com/Sithi5/dslr",
-    packages=["tests", "scripts", "predict", "train"],
+    packages=["tests", "dslr"],
     entry_points={
         "console_scripts": [
-            "logreg_predict = predict.logreg_predict:cli",
-            "logreg_train = train.logreg_train:cli",
+            "logreg_predict = dslr.predict.logreg_predict:cli",
+            "logreg_train = dslr.train.logreg_train:cli",
             # SCRIPTS
-            "describe = scripts.describe:cli",
-            "histogram = scripts.histogram:cli",
-            "pair_plot = scripts.pair_plot:cli",
-            "scatter_plot = scripts.scatter_plot:cli",
+            "describe = dslr.scripts.describe:cli",
+            "histogram = dslr.scripts.histogram:cli",
+            "pair_plot = dslr.scripts.pair_plot:cli",
+            "scatter_plot = dslr.scripts.scatter_plot:cli",
             # END OF SCRIPTS
         ],
     },

@@ -2,13 +2,14 @@ import argparse
 import numpy as np
 import pandas as pd
 
+
 def describe_dataset(dataset):
-    data = dataset.select_dtypes('float64')
+    data = dataset.select_dtypes("float64")
     rows = ["Count", "Mean", "Std", "Min", "25%", "50%", "75%", "Max"]
     column = []
     for i in data:
         column.append(i)
-    
+
 
 def open_datafile(datafile):
     try:
