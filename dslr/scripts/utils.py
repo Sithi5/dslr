@@ -1,5 +1,12 @@
 import math
+import pandas as pd
+import argparse
 import numpy as np
+
+def get_key(val, my_dict):
+    for key, value in my_dict.items():
+         if val == value:
+             return key
 
 
 def count(data):
@@ -78,3 +85,15 @@ def max(data):
         if not np.isnan(i) and i > max:
             max = i
     return max
+
+def open_datafile(datafile):
+    try:
+        data = pd.read_csv(datafile)
+    except pd.errors.EmptyDataError:
+        exit("Empty data file.")
+    except pd.errors.ParserError:
+        raise argparse.ArgumentTypeError("Error parsing file, needs to be a \
+            well formated csv.")
+    except Exception as error:
+        exit(f"{error}: File {datafile} corrupted or does not exist.")
+    return data

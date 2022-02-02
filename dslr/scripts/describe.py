@@ -1,8 +1,7 @@
 import argparse
-from asyncio.windows_events import NULL
 import numpy as np
 import pandas as pd
-from dslr.scripts.utils import count, mean, std, min, quarter, median, three_quarters, max
+from dslr.scripts.utils import count, mean, std, min, quarter, median, three_quarters, max, open_datafile
 
 
 functions_dict = {
@@ -34,24 +33,14 @@ def describe_dataset(dataset):
     "75%": [],
     "Max": []
     }
+    cols_vides = [col for col in dataset.columns if dataset[col].isnull().all()]
+    dataset.drop(cols_vides, axis=1, inplace=True)
     data = dataset.select_dtypes("float64")
     for col in data.columns:
         lister = list(data[col])
         for i, elem in enumerate(rows):
             rows[elem].append(functions_dict[i](lister))
     describe_display(rows, data)
-
-def open_datafile(datafile):
-    try:
-        data = pd.read_csv(datafile)
-    except pd.errors.EmptyDataError:
-        exit("Empty data file.")
-    except pd.errors.ParserError:
-        raise argparse.ArgumentTypeError("Error parsing file, needs to be a \
-            well formated csv.")
-    except Exception as error:
-        exit(f"{error}: File {datafile} corrupted or does not exist.")
-    return data
 
 
 def cli():
