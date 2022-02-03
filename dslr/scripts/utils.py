@@ -3,10 +3,11 @@ import pandas as pd
 import argparse
 import numpy as np
 
+
 def get_key(val, my_dict):
     for key, value in my_dict.items():
-         if val == value:
-             return key
+        if val == value:
+            return key
 
 
 def count(data):
@@ -16,14 +17,16 @@ def count(data):
             count += 1
     return float(count)
 
+
 def mean(data):
     sum = 0
     c = count(data)
     for i in data:
         if not np.isnan(i):
             sum += i
-    mean = sum/c
+    mean = sum / c
     return float(mean)
+
 
 def std(data):
     m = mean(data)
@@ -31,10 +34,11 @@ def std(data):
     sum_std = 0
     for i in data:
         if not np.isnan(i):
-            sum_std += (i - m)**2
+            sum_std += (i - m) ** 2
     var = sum_std / c
-    std = var**(0.5)
+    std = var ** (0.5)
     return float(std)
+
 
 def min(data):
     min = data[0]
@@ -43,16 +47,17 @@ def min(data):
             min = i
     return min
 
+
 def percentile(data, percentile):
     data = np.sort(data)
-    k = (len(data)-1) * percentile
+    k = (len(data) - 1) * percentile
     f = math.floor(k)
     c = math.ceil(k)
     if f == c:
         return data[int(k)]
-    d0 = data[int(f)] * (c-k)
-    d1 = data[int(c)] * (k-f)
-    return d0+d1
+    d0 = data[int(f)] * (c - k)
+    d1 = data[int(c)] * (k - f)
+    return d0 + d1
 
 
 def quarter(data):
@@ -63,6 +68,7 @@ def quarter(data):
     res = percentile(tmp_data, 0.25)
     return res
 
+
 def median(data):
     tmp_data = []
     for i in data:
@@ -70,6 +76,7 @@ def median(data):
             tmp_data.append(i)
     res = percentile(tmp_data, 0.50)
     return res
+
 
 def three_quarters(data):
     tmp_data = []
@@ -79,6 +86,7 @@ def three_quarters(data):
     res = percentile(tmp_data, 0.75)
     return res
 
+
 def max(data):
     max = 0
     for i in data:
@@ -86,14 +94,17 @@ def max(data):
             max = i
     return max
 
+
 def open_datafile(datafile):
     try:
         data = pd.read_csv(datafile)
     except pd.errors.EmptyDataError:
         exit("Empty data file.")
     except pd.errors.ParserError:
-        raise argparse.ArgumentTypeError("Error parsing file, needs to be a \
-            well formated csv.")
+        raise argparse.ArgumentTypeError(
+            "Error parsing file, needs to be a \
+            well formated csv."
+        )
     except Exception as error:
         exit(f"{error}: File {datafile} corrupted or does not exist.")
     return data

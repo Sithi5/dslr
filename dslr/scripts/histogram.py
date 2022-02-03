@@ -1,14 +1,11 @@
-from dslr.scripts.utils import get_key, open_datafile, std, get_key
-import matplotlib.pyplot as plt
 import argparse
-import numpy as np
+import matplotlib.pyplot as plt
 
-houses = {
-    "Gryffindor": 1,
-    "Hufflepuff": 2,
-    "Ravenclaw": 3,
-    "Slytherin": 4
-}
+from dslr.scripts.utils import get_key, open_datafile, std
+
+
+houses = {"Gryffindor": 1, "Hufflepuff": 2, "Ravenclaw": 3, "Slytherin": 4}
+
 
 def display_histogram(col, data):
     plt.figure()
@@ -19,7 +16,7 @@ def display_histogram(col, data):
             if data["Hogwarts House"][index] == i:
                 current.append(elem)
         house = get_key(i, houses)
-        plt.hist(current, alpha = 0.5, label=house)
+        plt.hist(current, alpha=0.5, label=house)
         plt.legend(loc="upper left")
     plt.show()
 
@@ -30,7 +27,7 @@ def histogram(dataset):
     min_std = 9999999
     best = ""
     for col in data.columns:
-        if col != 'Hogwarts House' and col != 'Index':
+        if col != "Hogwarts House" and col != "Index":
             if min_std > std(list(data[col])):
                 min_std = std(list(data[col]))
                 best = col
@@ -38,8 +35,10 @@ def histogram(dataset):
 
 
 def cli():
-    parser = argparse.ArgumentParser(description="DataScience X Logistic \
-        Regression program")
+    parser = argparse.ArgumentParser(
+        description="DataScience X Logistic \
+        Regression program"
+    )
     parser.add_argument("dataset", type=open_datafile, help="input a csv file.")
     args = parser.parse_args()
     histogram(args.dataset)
