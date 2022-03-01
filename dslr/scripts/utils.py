@@ -108,3 +108,13 @@ def open_datafile(datafile):
     except Exception as error:
         exit(f"{error}: File {datafile} corrupted or does not exist.")
     return data
+
+
+def standardize(x):
+    mean = np.mean(x, axis=0)
+    std = np.std(x, axis=0)
+    return (x - mean) / std
+
+
+def sigmoid(z):
+    return 1 / (1 + np.exp(-z))
