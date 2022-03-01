@@ -6,6 +6,9 @@ with open("README.md", "r") as f:
 requirements = [
     "pandas==1.3.4",
     "numpy==1.21.4",
+    "progress==1.6",
+    "matplotlib==3.5.1",
+    "seaborn==0.11.2",
 ]
 
 test_requirements = ["pytest==6.2.5"]

@@ -11,7 +11,7 @@ class Logger:
     def __init__(self, level, name="truc"):
         self.Logger = logging.getLogger(name)
         self.Logger.setLevel(level)
-        formatter = logging.Formatter("%(asctime)s:%(levelname)s - %(message)s", "%H:%M:%S")
+        formatter = logging.Formatter("%(levelname)s - %(message)s")
 
         ch = logging.StreamHandler()
         ch.setFormatter(formatter)
@@ -21,7 +21,7 @@ class Logger:
         self.Logger.info(message)
 
     def warning(self, message):
-        self.Logger.warning(message)
+        self.Logger.warning(f"{Fore.YELLOW}{message}{Style.RESET_ALL}")
 
     def error(self, message):
         self.Logger.error(f"{Fore.RED}{message}{Style.RESET_ALL}")
