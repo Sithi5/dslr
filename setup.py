@@ -36,6 +36,8 @@ setup(
             "histogram = dslr.scripts.histogram:cli",
             "pair_plot = dslr.scripts.pair_plot:cli",
             "scatter_plot = dslr.scripts.scatter_plot:cli",
+            ## BONUS
+            "check = dslr.scripts.check_results:cli",
             # END OF SCRIPTS
         ],
     },

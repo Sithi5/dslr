@@ -2,7 +2,7 @@ import argparse
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-from dslr.scripts.utils import open_datafile
+from dslr.utils import open_datafile
 
 
 def pair_plot(data):
