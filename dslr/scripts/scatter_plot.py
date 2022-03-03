@@ -1,9 +1,8 @@
 import argparse
 import matplotlib.pyplot as plt
 
-from dslr.scripts.utils import open_datafile
-
-houses = {"Gryffindor": 1, "Hufflepuff": 2, "Ravenclaw": 3, "Slytherin": 4}
+from dslr.utils import open_datafile, get_key
+from dslr.train.logreg_train import house, house_rev
 
 
 def scatter_plot(data, col1, col2):
@@ -28,11 +27,9 @@ def cli():
     )
     parser.add_argument("dataset", type=open_datafile, help="input a csv file.")
     parser.add_argument("feature_1", type=str, nargs="?", default="Astronomy")
-    parser.add_argument(
-        "feature_2", type=str, nargs="?", default="Defense Against the Dark Arts"
-    )
+    parser.add_argument("feature_2", type=str, nargs="?", default="Defense Against the Dark Arts")
     args = parser.parse_args()
-    args.dataset["Hogwarts House"].replace(houses, inplace=True)
+    args.dataset["Hogwarts House"].replace(house, inplace=True)
     data = args.dataset.select_dtypes("number").dropna()
     scatter_plot(data, args.feature_1, args.feature_2)
 

@@ -1,7 +1,7 @@
 import argparse
 import matplotlib.pyplot as plt
 
-from dslr.scripts.utils import get_key, open_datafile, std
+from dslr.utils import get_key, open_datafile, std
 
 
 houses = {"Gryffindor": 1, "Hufflepuff": 2, "Ravenclaw": 3, "Slytherin": 4}
@@ -17,6 +17,7 @@ def display_histogram(col, data):
                 current.append(elem)
         house = get_key(i, houses)
         plt.hist(current, alpha=0.5, label=house)
+        plt.ylabel("Frequency")
         plt.legend(loc="upper left")
     plt.show()
 

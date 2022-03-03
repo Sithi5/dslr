@@ -1,7 +1,7 @@
 import argparse
 import pandas as pd
 
-from dslr.scripts.utils import (
+from dslr.utils import (
     count,
     mean,
     std,

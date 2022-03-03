@@ -1,7 +1,8 @@
-import math
-import pandas as pd
+import csv
 import argparse
+import math
 import numpy as np
+import pandas as pd
 
 
 def get_key(val, my_dict):
@@ -113,8 +114,14 @@ def open_datafile(datafile):
 def standardize(x):
     mean = np.mean(x, axis=0)
     std = np.std(x, axis=0)
-    return (x - mean) / std
+    return (x - mean) / std, mean, std
 
 
 def sigmoid(z):
     return 1 / (1 + np.exp(-z))
+
+
+def create_csv(row_list, name):
+    with open(name, "w", newline="") as file:
+        writer = csv.writer(file)
+        writer.writerows(row_list)
