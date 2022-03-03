@@ -63,9 +63,9 @@ def predict(df, weights, logger):
                 result[j] = 0
         maximum = max(result)
         index = result.index(maximum)
-        rounded =
+        rounded = [round(result[l], 2) for l in range(4)]
         logger.debug(
-            f"{result:.2f}, best = {result[index]:.2f}, house for best = {house_rev[index + 1]}"
+            f"{Fore.YELLOW}{rounded},{Style.RESET_ALL} best = {Fore.GREEN}{result[index]:.2f}{Style.RESET_ALL}, house for best = {Fore.BLUE}{house_rev[index + 1]}{Style.RESET_ALL}"
         )
         csv_list.append([i, house_rev[index + 1]])
     return csv_list
