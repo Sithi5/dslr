@@ -92,26 +92,29 @@ def cli():
 
     logger = Logger(level=args.level, name="Log from logreg_predict.py")
     df = args.dataset
-    weights = args.weights.to_numpy()
-    df.drop(
-        [
-            "Index",
-            "Arithmancy",
-            "Flying",
-            "Care of Magical Creatures",
-            "Potions",
-            "Transfiguration",
-        ],
-        axis=1,
-        inplace=True,
-    )
-    df = df[["Hogwarts House"] + list(df.select_dtypes(include="number").columns)]
+    try:
+        weights = args.weights.to_numpy()
+        df.drop(
+            [
+                "Index",
+                "Arithmancy",
+                "Flying",
+                "Care of Magical Creatures",
+                "Potions",
+                "Transfiguration",
+            ],
+            axis=1,
+            inplace=True,
+        )
+        df = df[["Hogwarts House"] + list(df.select_dtypes(include="number").columns)]
 
-    csv_list = predict(df, weights, logger)
-    if args.piechart:
-        print_piechart(csv_list, df)
-    create_csv(csv_list, "houses.csv")
-    logger.info("houses.csv created. index is in dataset for student place.")
+        csv_list = predict(df, weights, logger)
+        if args.piechart:
+            print_piechart(csv_list, df)
+        create_csv(csv_list, "houses.csv")
+        logger.info("houses.csv created. index is in dataset for student place.")
+    except Exception as error:
+        print("Something went wrong : ", error)
 
 
 if __name__ == "__main__":

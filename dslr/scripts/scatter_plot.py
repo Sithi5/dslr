@@ -9,14 +9,17 @@ def scatter_plot(data, col1, col2):
     plt.figure()
     plt.xlabel(col1)
     plt.ylabel(col2)
-    for house in range(1, 5):
+    plt.title("Scatter plot")
+    for houses in range(1, 5):
         x = []
         y = []
         for index, row in data.iterrows():
-            if int(row["Hogwarts House"]) == house:
+            if int(row["Hogwarts House"]) == houses:
                 x.append(row[col1])
                 y.append(row[col2])
-        plt.scatter(x, y, marker=".")
+        legend = get_key(houses, house)
+        plt.scatter(x, y, marker=".", label=legend)
+    plt.legend(loc="upper right")
     plt.show()
 
 

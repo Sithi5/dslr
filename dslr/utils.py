@@ -96,6 +96,26 @@ def max(data):
     return max
 
 
+def unique(data):
+    unique = []
+    for i in data:
+        if not np.isnan(i) and i not in unique:
+            unique.append(i)
+    return len(unique)
+
+
+def freq(data):
+    freq = []
+    numbers = []
+    for i in data:
+        if not np.isnan(i) and i not in freq:
+            freq.append(i)
+            numbers.append(1)
+        elif not np.isnan(i):
+            numbers[freq.index(i)] += 1
+    return numbers[numbers.index(max(numbers))]
+
+
 def open_datafile(datafile):
     try:
         data = pd.read_csv(datafile)

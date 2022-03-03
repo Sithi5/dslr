@@ -10,6 +10,8 @@ from dslr.utils import (
     median,
     three_quarters,
     max,
+    unique,
+    freq,
     open_datafile,
 )
 
@@ -23,6 +25,8 @@ functions_dict = {
     5: median,
     6: three_quarters,
     7: max,
+    8: unique,
+    9: freq,
 }
 
 
@@ -42,9 +46,11 @@ def describe_dataset(dataset):
         "50%": [],
         "75%": [],
         "Max": [],
+        "Unique": [],
+        "Freq": [],
     }
-    cols_vides = [col for col in dataset.columns if dataset[col].isnull().all()]
-    dataset.drop(cols_vides, axis=1, inplace=True)
+    cols_empty = [col for col in dataset.columns if dataset[col].isnull().all()]
+    dataset.drop(cols_empty, axis=1, inplace=True)
     data = dataset.select_dtypes("float64")
     for col in data.columns:
         lister = list(data[col])
