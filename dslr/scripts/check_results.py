@@ -24,14 +24,17 @@ def cli():
         metavar="log-level",
         choices=["ERROR", "WARNING", "INFO", "DEBUG", "NOTSET"],
         default="INFO",
+        help="Choices: ERROR, WARNING, INFO, DEBUG. The parameter set by default is INFO.",
     )
     args = parser.parse_args()
     logger = Logger(level=args.level)
 
-    dataset1 = args.dataset1.loc[:, "Hogwarts House"]
-    dataset2 = args.dataset.loc[:, "Hogwarts House"]
-
-    test_accuracy(dataset1, dataset2, logger)
+    try:
+        dataset1 = args.dataset1.loc[:, "Hogwarts House"]
+        dataset2 = args.dataset.loc[:, "Hogwarts House"]
+        test_accuracy(dataset1, dataset2, logger)
+    except Exception as error:
+        print("Something went wrong:", error)
 
 
 if __name__ == "main":

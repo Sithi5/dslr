@@ -12,18 +12,18 @@ def pair_plot(data):
 
 
 def cli():
-    parser = argparse.ArgumentParser(
-        description="DataScience X Logistic \
-        Regression program"
-    )
+    parser = argparse.ArgumentParser(description="DataScience Pair_plot program.")
     parser.add_argument("dataset", type=open_datafile, help="input a csv file.")
     args = parser.parse_args()
-    args.dataset.drop("Index", axis=1, inplace=True)
-    data = args.dataset[
-        ["Hogwarts House"] + list(args.dataset.select_dtypes("number").columns)
-    ].dropna()
-    print(data)
-    pair_plot(data)
+
+    try:
+        args.dataset.drop("Index", axis=1, inplace=True)
+        data = args.dataset[
+            ["Hogwarts House"] + list(args.dataset.select_dtypes("number").columns)
+        ].dropna()
+        pair_plot(data)
+    except Exception as error:
+        print("Something went wrong : ", error)
 
 
 if __name__ == "__main__":

@@ -24,17 +24,17 @@ def scatter_plot(data, col1, col2):
 
 
 def cli():
-    parser = argparse.ArgumentParser(
-        description="DataScience X Logistic \
-        Regression program"
-    )
+    parser = argparse.ArgumentParser(description="DataScience Scatter_plot program.")
     parser.add_argument("dataset", type=open_datafile, help="input a csv file.")
     parser.add_argument("feature_1", type=str, nargs="?", default="Astronomy")
     parser.add_argument("feature_2", type=str, nargs="?", default="Defense Against the Dark Arts")
     args = parser.parse_args()
-    args.dataset["Hogwarts House"].replace(house, inplace=True)
-    data = args.dataset.select_dtypes("number").dropna()
-    scatter_plot(data, args.feature_1, args.feature_2)
+    try:
+        args.dataset["Hogwarts House"].replace(house, inplace=True)
+        data = args.dataset.select_dtypes("number").dropna()
+        scatter_plot(data, args.feature_1, args.feature_2)
+    except Exception as error:
+        print("Something went wrong : ", error)
 
 
 if __name__ == "__main__":

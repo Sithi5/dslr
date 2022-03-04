@@ -200,6 +200,7 @@ def cli():
         metavar="log-level",
         choices=["ERROR", "WARNING", "INFO", "DEBUG", "NOTSET"],
         default="INFO",
+        help="Choices: ERROR, WARNING, INFO, DEBUG. The parameter set by default is INFO.",
     )
     parser.add_argument("-lr", "--lr", type=float, default=0.1, help="Learning rate")
     parser.add_argument(

@@ -60,13 +60,13 @@ def describe_dataset(dataset):
 
 
 def cli():
-    parser = argparse.ArgumentParser(
-        description="DataScience X Logistic \
-        Regression program"
-    )
+    parser = argparse.ArgumentParser(description="DataScience Describe program.")
     parser.add_argument("dataset", type=open_datafile, help="input a csv file.")
     args = parser.parse_args()
-    describe_dataset(args.dataset)
+    try:
+        describe_dataset(args.dataset)
+    except Exception as error:
+        print("Something went wrong : ", error)
 
 
 if __name__ == "__main__":

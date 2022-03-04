@@ -36,13 +36,13 @@ def histogram(dataset):
 
 
 def cli():
-    parser = argparse.ArgumentParser(
-        description="DataScience X Logistic \
-        Regression program"
-    )
+    parser = argparse.ArgumentParser(description="DataScience Histogram program.")
     parser.add_argument("dataset", type=open_datafile, help="input a csv file.")
     args = parser.parse_args()
-    histogram(args.dataset)
+    try:
+        histogram(args.dataset)
+    except Exception as error:
+        print("Something went wrong : ", error)
 
 
 if __name__ == "__main__":
