@@ -4,11 +4,12 @@ with open("README.md", "r") as f:
     long_description = f.read()
 
 requirements = [
-    "pandas==1.3.4",
-    "numpy==1.21.4",
+    "pandas==1.4.4",
+    "numpy==1.23.3",
     "progress==1.6",
     "matplotlib==3.5.1",
     "seaborn==0.11.2",
+    "colorama==0.4.5"
 ]
 
 test_requirements = ["pytest==6.2.5"]
