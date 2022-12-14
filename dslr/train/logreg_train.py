@@ -1,11 +1,10 @@
 import argparse
-import csv
 import matplotlib.pyplot as plt
 import numpy as np
 
 from colorama import Fore, Style
 from dslr.utils import open_datafile, standardize, sigmoid, create_csv
-from dslr.train.logger import Logger
+from logger.Logger import Logger
 from progress.bar import ChargingBar
 
 house = {"Ravenclaw": 1, "Slytherin": 2, "Gryffindor": 3, "Hufflepuff": 4}
@@ -198,7 +197,7 @@ def cli():
         "-l",
         "--level",
         metavar="log-level",
-        choices=["ERROR", "WARNING", "INFO", "DEBUG", "NOTSET"],
+        choices=["ERROR", "WARNING", "INFO", "DEBUG"],
         default="INFO",
         help="Choices: ERROR, WARNING, INFO, DEBUG. The parameter set by default is INFO.",
     )
@@ -207,7 +206,7 @@ def cli():
         "-a", "--accuracy", type=int, default=97, help="Minimal accuracy, Set to 97 by default."
     )
     args = parser.parse_args()
-    logger = Logger(level=args.level, name="Log from logreg_train.py")
+    logger = Logger(level=args.level, display_levels=False)
 
     if args.level == "DEBUG":
         training(args, logger)

@@ -4,9 +4,8 @@ import matplotlib.pyplot as plt
 
 from colorama import Fore, Style
 from dslr.utils import open_datafile, sigmoid, create_csv
-from dslr.train.logger import Logger
+from logger.Logger import Logger
 from dslr.train.logreg_train import house, house_rev
-
 
 def is_valid(df):
     df = df[["Hogwarts House"]]
@@ -82,7 +81,7 @@ def cli():
         "-l",
         "--level",
         metavar="log-level",
-        choices=["ERROR", "WARNING", "INFO", "DEBUG", "NOTSET"],
+        choices=["ERROR", "WARNING", "INFO", "DEBUG"],
         default="INFO",
         help="Choices: ERROR, WARNING, INFO, DEBUG. The parameter set by default is INFO.",
     )
@@ -91,7 +90,7 @@ def cli():
     )
     args = parser.parse_args()
 
-    logger = Logger(level=args.level, name="Log from logreg_predict.py")
+    logger = Logger(level=args.level, display_levels=False)
     df = args.dataset
     try:
         weights = args.weights.to_numpy()

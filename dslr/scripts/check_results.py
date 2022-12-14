@@ -1,7 +1,7 @@
 import argparse
 import pandas as pd
 from dslr.utils import open_datafile
-from dslr.train.logger import Logger
+from logger.Logger import Logger
 
 
 def test_accuracy(dataset1, dataset2, logger):
@@ -22,12 +22,12 @@ def cli():
         "-l",
         "--level",
         metavar="log-level",
-        choices=["ERROR", "WARNING", "INFO", "DEBUG", "NOTSET"],
+        choices=["ERROR", "WARNING", "INFO", "DEBUG"],
         default="INFO",
         help="Choices: ERROR, WARNING, INFO, DEBUG. The parameter set by default is INFO.",
     )
     args = parser.parse_args()
-    logger = Logger(level=args.level)
+    logger = Logger(level=args.level, display_levels=False)
 
     try:
         dataset1 = args.dataset1.loc[:, "Hogwarts House"]
@@ -37,5 +37,5 @@ def cli():
         print("Something went wrong:", error)
 
 
-if __name__ == "main":
+if __name__ == "__main__":
     cli()

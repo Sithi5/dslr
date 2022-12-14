@@ -9,7 +9,8 @@ requirements = [
     "progress==1.6",
     "matplotlib==3.5.1",
     "seaborn==0.11.2",
-    "colorama==0.4.5"
+    "colorama==0.4.5",
+    "logger-1.0.6 @ git+https://github.com/Sithi5/logger@1.0.6",
 ]
 
 test_requirements = ["pytest==6.2.5"]
